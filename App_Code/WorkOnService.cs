@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data;
-using System.Data.OleDb;
+using Microsoft.Data.Sqlite;
+using NewGymIgalTalProject.App_Code;
 
 /// <summary>
 /// Summary description for CityService
 /// </summary>
 public class WorkOnService
 { 
-    OleDbConnection myConnection;
+    SqliteConnection myConnection;
     public WorkOnService()
     {
-        string ConnectionString = Connect.getConnectionString();
-        myConnection = new OleDbConnection(ConnectionString);
+        string ConnectionString = Connect.GetConnectionString();
+        myConnection = new SqliteConnection(ConnectionString);
     }
     public DataSet GetWorkOn()
     {
@@ -23,13 +24,9 @@ public class WorkOnService
         {
             myConnection.Open();
             string sSql = "SELECT * from WorkOnTa";
-            OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
-            OleDbDataAdapter adapter = new OleDbDataAdapter();
-
-            adapter.SelectCommand = myCmd;
+            SqliteCommand myCmd = new SqliteCommand(sSql, myConnection);
+            SqliteDataAdapter adapter = new SqliteDataAdapter(myCmd);
             adapter.Fill(dataset);
-
-
         }
         catch (Exception ex)
         {

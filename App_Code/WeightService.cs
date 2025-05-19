@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data;
-using System.Data.OleDb;
+using Microsoft.Data.Sqlite;
+using NewGymIgalTalProject.App_Code;
 
 /// <summary>
 /// Summary description for CityService
 /// </summary>
 public class WeightService
 {
-    OleDbConnection myConnection;
+    SqliteConnection myConnection;
     public WeightService()
     {
-        string ConnectionString = Connect.getConnectionString();
-        myConnection = new OleDbConnection(ConnectionString);
+        string ConnectionString = Connect.GetConnectionString();
+        myConnection = new SqliteConnection(ConnectionString);
     }
     public DataSet GetAllWhight(int id)
     {
@@ -23,9 +24,9 @@ public class WeightService
         try
         {
             myConnection.Open();
-            string sSql = "SELECT * FROM WeightHeight WHERE Id="+id;
-            OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
-            OleDbDataAdapter adapter = new OleDbDataAdapter();
+            string sSql = "SELECT * FROM WeightHeight WHERE Id=" + id;
+            SqliteCommand myCmd = new SqliteCommand(sSql, myConnection);
+            SqliteDataAdapter adapter = new SqliteDataAdapter();
             adapter.SelectCommand = myCmd;
             adapter.Fill(dataset);
 
@@ -46,9 +47,8 @@ public class WeightService
         try
         {
             myConnection.Open();
-            string sSql = "INSERT INTO  WeightHeight VALUES (" + id + ",'" + date + "'," + i + "," + we + "," + he+ ")";
-            OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
-            OleDbDataAdapter adapter = new OleDbDataAdapter();
+            string sSql = "INSERT INTO WeightHeight VALUES (" + id + ",'" + date + "'," + i + "," + we + "," + he+ ")";
+            SqliteCommand myCmd = new SqliteCommand(sSql, myConnection);
             myCmd.ExecuteNonQuery();
         }
         catch (Exception ex)
@@ -67,8 +67,8 @@ public class WeightService
         {
             myConnection.Open();
             string sSql = "SELECT * from WeightHeight WHERE DateWeight='" + date+"'";
-            OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
-            OleDbDataAdapter adapter = new OleDbDataAdapter();
+            SqliteCommand myCmd = new SqliteCommand(sSql, myConnection);
+            SqliteDataAdapter adapter = new SqliteDataAdapter();
             adapter.SelectCommand = myCmd;
             adapter.Fill(dataset);
 
@@ -85,15 +85,15 @@ public class WeightService
 
         return dataset;
     }
-    public string GetWeight(int i,int id)
+    public string GetWeight(int i, int id)
     {
         DataSet dataset = new DataSet();
         try
         {
             myConnection.Open();
-            string sSql = "SELECT Weight from WeightHeight WHERE NumberOf=" + i+"AND Id="+id;
-            OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
-            OleDbDataAdapter adapter = new OleDbDataAdapter();
+            string sSql = "SELECT Weight from WeightHeight WHERE NumberOf=" + i + " AND Id=" + id;
+            SqliteCommand myCmd = new SqliteCommand(sSql, myConnection);
+            SqliteDataAdapter adapter = new SqliteDataAdapter();
             adapter.SelectCommand = myCmd;
             adapter.Fill(dataset);
 
@@ -110,15 +110,15 @@ public class WeightService
 
         return dataset.Tables[0].Rows[0][0].ToString();
     }
-    public string Getheight(int i,int id)
+    public string Getheight(int i, int id)
     {
         DataSet dataset = new DataSet();
         try
         {
             myConnection.Open();
-            string sSql = "SELECT Height from WeightHeight WHERE NumberOf=" + i+" AND Id="+id;
-            OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
-            OleDbDataAdapter adapter = new OleDbDataAdapter();
+            string sSql = "SELECT Height from WeightHeight WHERE NumberOf=" + i + " AND Id=" + id;
+            SqliteCommand myCmd = new SqliteCommand(sSql, myConnection);
+            SqliteDataAdapter adapter = new SqliteDataAdapter();
             adapter.SelectCommand = myCmd;
             adapter.Fill(dataset);
 
@@ -142,8 +142,8 @@ public class WeightService
         {
             myConnection.Open();
             string sSql = "SELECT Height from WeightHeight WHERE NumberOf=" + i;
-            OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
-            OleDbDataAdapter adapter = new OleDbDataAdapter();
+            SqliteCommand myCmd = new SqliteCommand(sSql, myConnection);
+            SqliteDataAdapter adapter = new SqliteDataAdapter();
             adapter.SelectCommand = myCmd;
             adapter.Fill(dataset);
 
@@ -167,9 +167,9 @@ public class WeightService
         try
         {
             myConnection.Open();
-            string sSql = "SELECT max(NumberOf) from WeightHeight WHERE Id="+id;
-            OleDbCommand myCmd = new OleDbCommand(sSql, myConnection);
-            OleDbDataAdapter adapter = new OleDbDataAdapter();
+            string sSql = "SELECT max(NumberOf) from WeightHeight WHERE Id=" + id;
+            SqliteCommand myCmd = new SqliteCommand(sSql, myConnection);
+            SqliteDataAdapter adapter = new SqliteDataAdapter();
             adapter.SelectCommand = myCmd;
             adapter.Fill(dataset);
 

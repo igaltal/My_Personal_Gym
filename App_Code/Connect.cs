@@ -1,11 +1,12 @@
 ﻿using Microsoft.Data.Sqlite;
+using System.IO;
 
 namespace NewGymIgalTalProject.App_Code
 {
     public class Connect
     {
-        // Use the absolute path for the SQLite database on a Mac
-        private static readonly string filePath = "/Users/igaltal/Desktop/projects/gymigaltal/App_Data/Datatal.db";  // Adjust the file name as necessary
+        // Use a relative path for the SQLite database that works across platforms
+        private static readonly string filePath = Path.Combine(Directory.GetCurrentDirectory(), "App_Data", "Datatal.db");
 
         public static string GetConnectionString()
         {
