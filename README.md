@@ -1,109 +1,92 @@
-# My_Personal_Gym
+# My Personal Gym - Fitness Management Application
 
 ## Overview
-This project is a comprehensive web application designed to manage and enhance the experience of gym goers and trainers. It includes a detailed management system for user accounts, trainer schedules, exercise routines, and much more.
 
-## Structure
+My Personal Gym is a comprehensive web application designed to manage and enhance the experience of gym goers and trainers. It provides a complete management system for user accounts, trainer schedules, exercise routines, and progress tracking.
 
-### App_Code
-Contains the backend logic of the application:
+## Features
 
-1. `AccountDetails.cs`
-2. `CityService.cs`
-3. `ClassDiagram.cd`
-4. `CoachingService.cs`
-5. `Connect.cs`
-6. `ExercisesService.cs`
-7. `GenderService.cs`
-8. `GoalService.cs`
-9. `LevelService.cs`
-10. `MessageService.cs`
-11. `PresenceService.cs`
-12. `ProgramService.cs`
-13. `Resentatiom.cs`
-14. `TrainersService.cs`
-15. `Users.cs`
-16. `UserService.cs`
-17. `WeightService.cs`
-18. `WorkOnService.cs`
+- **User Management**: Register, authenticate, and manage user profiles
+- **Exercise Database**: Comprehensive collection of exercises with descriptions and difficulty levels
+- **Trainer Profiles**: Information about gym trainers and their specializations
+- **Training Programs**: Predefined workout programs for different fitness goals
+- **Progress Tracking**: Monitor weight, height, and workout performance over time
+- **Messaging System**: Communication between trainers and clients
 
-### App_Data
-Database and CSV files used within the application:
+## Technology Stack
 
-- `Datatal.sql`
-- `Goal.csv`
-- `Inside Goal.csv`
-- `Cities.csv`
-- `Exercises.csv`
-- `ExercisesTrain.csv`
-- `Gender.csv`
-- `Goal.csv`
-- `Levels.csv`
-- `LevelStart.csv`
-- `Messages.csv`
-- `Presence.csv`
-- `Ranks.csv`
-- `Trainers.csv`
-- `Users.csv`
-- `WeightHeight.csv`
-- `WorkOnTa.csv`
+- **Framework**: ASP.NET Core 8.0
+- **Database**: SQLite 
+- **Frontend**: HTML, CSS, JavaScript
+- **ORM**: ADO.NET with custom data adapters
 
-### ASPX Code-behind Files
-Code-behind files for the ASP.NET pages:
+## Project Structure
 
-1. `AllExercises.aspx.cs`
-2. `AllOurTraineraspx.aspx.cs`
-3. `ChangeTraninerProgram.aspx.cs`
-4. `Default.aspx.cs`
-5. `Default3.aspx.cs`
-6. `Harshama.aspx.cs`
-7. `HomePage2.aspx.cs`
-8. `Manger.aspx.cs`
-9. `Messages.aspx.cs`
-10. `MyMessage.aspx.cs`
-11. `MyPracticing.aspx.cs`
-12. `MyProfilaspx.aspx.cs`
-13. `NewGymIgalTalProject.csproj`
-14. `Presence.aspx.cs`
-15. `Program.cs`
-16. `StartTrain.aspx.cs`
-17. `TalMeromProject.sln`
-18. `TrainingProgram.aspx.cs`
-19. `Web.config`
-20. `Web.Debug.config`
-21. `WeightPage.aspx.cs`
+### Core Components
 
-### ASPX Pages
-Frontend ASP.NET pages:
+- **App_Code**: Contains service classes and business logic
+  - `UserService.cs`: User authentication and profile management
+  - `TrainersService.cs`: Trainer profile management
+  - `ExercisesService.cs`: Exercise database operations
+  - `ProgramService.cs`: Training program management
+  - `WeightService.cs`: Weight tracking functionality
+  - `Connect.cs`: Database connection management
 
-1. `AllExercises.aspx`
-2. `AllOurTraineraspx.aspx`
-3. `ChangeTraninerProgram.aspx`
-4. `Default.aspx`
-5. `Default3.aspx`
-6. `Harshama.aspx`
-7. `HomePage2.aspx`
-8. `Manger.aspx`
-9. `Messages.aspx`
-10. `MyMessage.aspx`
-11. `MyPracticing.aspx`
-12. `MyProfilaspx.aspx`
-13. `Presence.aspx`
-14. `StartTrain.aspx`
-15. `TrainingProgram.aspx`
-16. `WeightPage.aspx`
+- **App_Data**: Database files and initialization scripts
+  - `sqlite_schema.sql`: SQLite database schema
+  - Various CSV files for data initialization
 
-### Configuration Files
-Configuration and settings files:
+- **wwwroot**: Static files and frontend interface
+  - HTML pages for each section of the application
+  - CSS styling for the interface
 
-1. `appsettings.Development.json`
-2. `appsettings.json`
+## Setup Instructions
 
-## Getting Started
-To run this project, ensure you have the appropriate .NET framework and server setup. Update the connection strings in the config files as per your database server settings.
+Please refer to the [SETUP.md](SETUP.md) file for detailed installation and configuration instructions.
 
-## Contributions
-Contributions are welcome. Please fork the repository and submit pull requests for any enhancements.
+## Database Schema
+
+The application uses a relational database with the following main tables:
+
+- **Users**: Stores user profile information
+- **Trainers**: Contains trainer details and specialties
+- **Exercises**: Catalog of all available exercises
+- **Programs**: Workout program definitions
+- **WorkOnTa**: Categories of exercises by body part
+- **WeightHeight**: Tracks user body measurements over time
+- **Messages**: Communication between users and trainers
+
+## Development
+
+### Prerequisites
+
+- .NET SDK 8.0 or later
+- SQLite
+
+### Building and Running
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/My_Personal_Gym.git
+
+# Navigate to the project directory
+cd My_Personal_Gym
+
+# Restore dependencies
+dotnet restore
+
+# Run the application
+dotnet run
+```
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Thanks to all contributors who have helped shape this project
+- Special thanks to the SQLite team for their excellent database engine
 
 
 
